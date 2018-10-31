@@ -11,11 +11,10 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var test: UITextField!
-    var userIsInTheMiddleOfTypingANumber:Bool = false
-    
+    @IBOutlet weak var test1: UITextField!
     var qianyige:Double = 0
     var houyige:Double = 0
-    var jieguo:Double = 0
+    var jieguo:Double = 0.0
     
     var point:Double = 0.0
     
@@ -74,7 +73,6 @@ class ViewController: UIViewController {
             }
             point = point * 0.1
         }
-        
         test.text = String(houyige)
     }
     
@@ -88,7 +86,8 @@ class ViewController: UIViewController {
             qianyige = houyige
             houyige = 0
         }
-        test.text = "+"
+        test.text = String(houyige)
+        test1.text = String(qianyige) + "+"
         point = 0.0
         fuhao = sender.currentTitle
     }
@@ -98,7 +97,8 @@ class ViewController: UIViewController {
             qianyige = houyige
             houyige = 0
         }
-        test.text = "-"
+        test.text = String(houyige)
+        test1.text = String(qianyige) + "-"
         point = 0.0
         fuhao = sender.currentTitle
     }
@@ -108,7 +108,8 @@ class ViewController: UIViewController {
             qianyige = houyige
             houyige = 0
         }
-        test.text = "x"
+        test.text = String(houyige)
+        test1.text = String(qianyige) + "x"
         point = 0.0
         fuhao = sender.currentTitle
     }
@@ -118,7 +119,8 @@ class ViewController: UIViewController {
             qianyige = houyige
             houyige = 0
         }
-        test.text = "/"
+        test.text = String(houyige)
+        test1.text = String(qianyige) + "/"
         point = 0.0
         fuhao = sender.currentTitle
     }
@@ -127,17 +129,21 @@ class ViewController: UIViewController {
         if (qianyige != 0) && (houyige != 0) && (fuhao != "") {
             switch fuhao! {
             case "+":
-                test.text = "+"
                 jieguo = qianyige + houyige
+                test1.text = String(qianyige) + "+" + String(houyige)
             case "-":
                 jieguo = qianyige - houyige
+                test1.text = String(qianyige) + "-" + String(houyige)
             case "x":
                 jieguo = qianyige * houyige
+                test1.text = String(qianyige) + "x" + String(houyige)
             case "/":
                 jieguo = qianyige / houyige
+                test1.text = String(qianyige) + "/" + String(houyige)
             default:
                 print("output")
             }
+            
             test.text = String(jieguo)
             
             fuhao = ""
@@ -148,7 +154,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func point(_ sender: Any) {
-        if point == 0 {
+        if point == 0.0 {
             point = 0.1
         }
     }
